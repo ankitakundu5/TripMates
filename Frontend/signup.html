@@ -1,0 +1,180 @@
+<!-- <?php
+// Initialize session
+session_start();
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Database connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "travel_db";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Handle login form
+    if (isset($_POST['login'])) {
+        $email = $conn->real_escape_string($_POST['email']);
+        $password = $_POST['password'];
+
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['email'] = $user['email'];
+                header("Location: dashboard.php");
+                exit;
+            } else {
+                $login_error = "Invalid email or password";
+            }
+        } else {
+            $login_error = "Invalid email or password";
+        }
+    }
+
+    // Handle signup form
+    if (isset($_POST['signup'])) {
+        $email = $conn->real_escape_string($_POST['email']);
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        // Check if email already exists
+        $check_sql = "SELECT * FROM users WHERE email = '$email'";
+        $check_result = $conn->query($check_sql);
+
+        if ($check_result->num_rows > 0) {
+            $signup_error = "Email already exists";
+        } else {
+            $insert_sql = "INSERT INTO users (email, password) VALUES ('$email', '$password')";
+            if ($conn->query($insert_sql) === TRUE) {
+                $_SESSION['user_id'] = $conn->insert_id;
+                $_SESSION['email'] = $email;
+                header("Location: dashboard.php");
+                exit;
+            } else {
+                $signup_error = "Error: " . $conn->error;
+            }
+        }
+    }
+
+    $conn->close();
+}
+
+// Determine which page to show
+$page = isset($_GET['page']) ? $_GET['page'] : 'login';
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $page == 'login' ? 'Sign In' : 'Sign Up'; ?> - TripMates</title>
+   
+</head>
+<body>
+    <div class="container">
+        <!-- Auth Form Section -->
+        <div class="auth-form">
+            <div class="logo">
+                <img src="img/tripmates-logo.png" alt="TripMates Logo">
+            </div>
+            
+            <?php if ($page == 'login'): ?>
+                <!-- Login Form -->
+                <h1 class="form-title">Sign In</h1>
+                
+                <?php if (isset($login_error)): ?>
+                    <div class="error-message"><?php echo $login_error; ?></div>
+                <?php endif; ?>
+                
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <div class="forgot-link">
+                        <a href="forgot-password.php">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" name="login" class="btn">Sign In</button>
+                    
+                    <div class="separator">
+                        <div class="line"></div>
+                        <div class="text">or</div>
+                        <div class="line"></div>
+                    </div>
+                    
+                    <button type="button" class="google-btn">
+                        <img src="img/google-icon.png" alt="Google">
+                        <span>Sign in with Google</span>
+                    </button>
+                    
+                    <div class="auth-footer">
+                        No account? <a href="?page=signup">Sign up</a>
+                    </div>
+                </form>
+            <?php else: ?>
+                <!-- Signup Form -->
+                <h1 class="form-title">Sign Up</h1>
+                
+                <?php if (isset($signup_error)): ?>
+                    <div class="error-message"><?php echo $signup_error; ?></div>
+                <?php endif; ?>
+                
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?page=signup'; ?>">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <button type="submit" name="signup" class="btn">Sign Up</button>
+                    
+                    <div class="separator">
+                        <div class="line"></div>
+                        <div class="text">or</div>
+                        <div class="line"></div>
+                    </div>
+                    
+                    <button type="button" class="google-btn">
+                        <img src="img/google-icon.png" alt="Google">
+                        <span>Sign up with Google</span>
+                    </button>
+                    
+                    <div class="auth-footer">
+                        Already have an account? <a href="?page=login">Sign in</a>
+                    </div>
+                </form>
+            <?php endif; ?>
+        </div>
+        
+        <!-- Image Section -->
+        <div class="image-section">
+            <?php if ($page == 'login'): ?>
+                <img src="img/rafting-adventure.jpg" alt="Rafting Adventure">
+            <?php else: ?>
+                <img src="img/camping-night.jpg" alt="Camping at Night">
+            <?php endif; ?>
+        </div>
+    </div>
+</body>
+</html>
