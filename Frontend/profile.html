@@ -2,107 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adventure Awaits</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .header {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
-      background-size: cover;
-      background-position: center;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-    }
-    .header h1 {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 10px 20px;
-      border-radius: 10px;
-    }
-    .card-custom {
-      max-width: 700px;
-      margin: auto;
-    }
-    .booking-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-    .user-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile</title>
+   <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Bootstrap JS (with Popper) -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <link rel="stylesheet" href="./styles/profile.css">
+
+
 </head>
-<body class="bg-light">
-
-  <div class="header mb-4">
-    <h1>ADVENTURE AWAITS</h1>
-  </div>
-
+<body id="profile">
+  
+  <div id="header-container"></div>
+   
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header-container').innerHTML = data;
+      });
+  </script>
   <div class="container">
-    <!-- User Details Card -->
-    <div class="card mb-4 card-custom shadow">
-      <div class="card-header text-white bg-warning fw-bold">DETAILS</div>
-      <div class="card-body d-flex justify-content-between align-items-center">
-        <div>
-          <p><strong>Name:</strong> Lorem Ipsum</p>
-          <p><strong>Age:</strong> 21 yrs old</p>
-          <p><strong>Email:</strong> lorem.ipsum@gmail.com</p>
-          <p><strong>Phone No.:</strong> 9348382944</p>
-          <p><strong>Gender:</strong> Male</p>
-          <button class="btn btn-outline-warning btn-sm">Edit</button>
-        </div>
-        <img src="https://img.freepik.com/premium-vector/vector-young-man-anime-style-character-vector-illustration-design-manga-anime-boy_147933-12428.jpg?
-        semt=ais_hybrid&w=740" alt="User Avatar" class="user-avatar">
-      </div>
-    </div>
-
-    <!-- Bookings Card -->
-    <div class="card card-custom shadow mb-4">
-      <div class="card-header text-white bg-warning fw-bold">BOOKINGS</div>
-      <div class="card-body">
-        <!-- Booking Item 1 -->
-        <div class="d-flex align-items-start mb-4">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtQrccNQG3Dc-qXdn67jSLwLrHL3qMQPmbQ&s" class="booking-img me-3" alt="Lodge">
-          <div class="flex-grow-1 text-center">
-            <p class="mb-1 fw-bold">Driftwood Lodge</p>
-            <p class="mb-2 text-muted">Check out trip details to make sure you don’t miss out anything</p>
-            <div class="text-center">
-              <button class="btn btn-success btn-sm me-1">Booking</button>
-              <button class="btn btn-success btn-sm me-1">Payment</button>
-              <button class="btn btn-outline-warning btn-sm">Edit</button>
-            </div>
+   
+      <div class="card">
+          <div class="card-header">
+              DETAILS
           </div>
-        </div>
-
-        <!-- Booking Item 2 -->
-        <div class="d-flex align-items-start">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqtQrccNQG3Dc-qXdn67jSLwLrHL3qMQPmbQ&s" class="booking-img me-3" alt="Lodge">
-          <div class="flex-grow-1 text-center">
-            <p class="mb-1 fw-bold">Driftwood Lodge</p>
-            <p class="mb-2 text-muted">This trip’s over but your journey has just begun!</p>
-            <div class="text-center">
-              <button class="btn btn-success btn-sm me-1">Booking</button>
-              <button class="btn btn-success btn-sm me-1">Payment</button>
-              <button class="btn btn-outline-warning btn-sm">Edit</button>
-            </div>
+          <div class="profile-section">
+              <div class="profile-details">
+                  <div class="detail-row">
+                      <div class="detail-label">Name:</div>
+                      <div class="detail-value">Lorem ipsum</div>
+                  </div>
+                  <div class="detail-row">
+                      <div class="detail-label">Age:</div>
+                      <div class="detail-value">21 yrs old</div>
+                  </div>
+                  <div class="detail-row">
+                      <div class="detail-label">Email:</div>
+                      <div class="detail-value">lorem.ipsum@gmail.com</div>
+                  </div>
+                  <div class="detail-row">
+                      <div class="detail-label">Phone No:</div>
+                      <div class="detail-value">9334521234</div>
+                  </div>
+                  <div class="detail-row">
+                      <div class="detail-label">Gender:</div>
+                      <div class="detail-value">Male</div>
+                  </div>
+                  <button class="btn btn-edit">EDIT</button>
+              </div>
+              <div class="profile-avatar">
+                  <svg width="60" height="60" viewBox="0 0 60 60">
+                      <path d="M30 0C13.432 0 0 13.432 0 30s13.432 30 30 30 30-13.432 30-30S46.568 0 30 0zm0 10c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm0 44c-8.284 0-15.623-4.152-20-10.476 0.065-6.629 13.335-10.276 20-10.276s19.935 3.647 20 10.276C45.623 49.848 38.284 54 30 54z" fill="#664433"/>
+                      <rect x="22" y="28" width="16" height="6" fill="#b98b56"/>
+                  </svg>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
-
-    <!-- Explore Button -->
-    <div class="text-center mb-4">
-      <button class="btn btn-warning px-4">Explore</button>
-    </div>
-
+      
+      <!-- Bookings Card -->
+      <div class="card">
+          <div class="card-header">
+              BOOKINGS
+          </div>
+          <div class="card-body">
+              <!-- Booking 1 -->
+              <div class="booking-card">
+                  <div class="booking-image">
+                      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhY2h8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="Beach">
+                  </div>
+                  <div class="booking-details">
+                      <div class="booking-title">Driftwood Lodge</div>
+                      <div class="booking-location">Kihei, Maui</div>
+                      <div class="booking-message">Check your itinerary to make sure you don't miss out anything!</div>
+                      <div class="booking-actions">
+                          <button class="btn btn-booking btn-booking-green">Booking</button>
+                          <button class="btn btn-booking btn-booking-payment">Payment</button>
+                          <button class="btn btn-booking btn-booking-edit">EDIT</button>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Booking 2 -->
+              <div class="booking-card">
+                  <div class="booking-image">
+                      <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhY2h8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="Beach">
+                  </div>
+                  <div class="booking-details">
+                      <div class="booking-title">Driftwood Lodge</div>
+                      <div class="booking-location">Kihei, Maui</div>
+                      <div class="booking-message">This map will let your journey run just right!</div>
+                      <div class="booking-actions">
+                          <button class="btn btn-booking btn-booking-green">Booking</button>
+                          <button class="btn btn-booking btn-booking-payment">Payment</button>
+                          <button class="btn btn-booking btn-booking-edit">EDIT</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Explore Button -->
+      <button class="btn btn-explore">Explore</button>
   </div>
+  <div id="footer-container"></div>
+   
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

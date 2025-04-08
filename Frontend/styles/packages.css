@@ -25,19 +25,13 @@ body {
 
 .price-card {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
+    padding:20px;
+     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-top:10px darkorange;
   }
 
-  .price-box-header {
-    background-color: darkorange;
-    padding: 10px 15px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    color: #fff;
-    font-weight: bold;
-  }
+
 
   .booking-btn {
     background-color: orange;

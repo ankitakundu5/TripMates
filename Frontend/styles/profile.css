@@ -1,0 +1,177 @@
+.container{
+    margin:50px;
+    padding:0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card {
+    width:800px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    border: none;
+  
+}
+
+div.card-header {
+    background-color: darkorange;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.profile-details {
+    width:500px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background-color: #f3d7bd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-left: 15px;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.detail-label {
+    width: 100px;
+    font-weight: bold;
+    color: #333;
+}
+
+.detail-value {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn.btn-edit {
+    background-color: darkorange;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 20px;
+    color: #fff;
+    font-weight: bold;
+    margin: 10px 300px;
+    width: 100px;
+    align-self:center ;
+    justify-self: center;
+}
+
+.booking-card {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.booking-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.booking-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.booking-details {
+    flex: 1;
+}
+
+.booking-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.booking-location {
+    color: darkorange;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.booking-message {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn.btn-booking {
+    background-color: yellow;
+    border-radius: 7px;
+    padding: 5px 15px;
+    font-size: 0.85rem;
+}
+
+.btn.btn-booking-green {
+    background-color: lightgreen;
+    border-radius: 7px;
+    border: none;
+    color: black;
+    margin-top:5px;
+}
+
+.btn.btn-booking-payment {
+    background-color: lightgreen;
+    border-radius: 7px;
+    border: none;
+    color: black;
+    margin-top:5px;
+}
+
+.btn.btn-explore {
+    background-color: darkorange;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+
+}
+
+.btn.btn-booking-edit {
+    background-color: darkorange;
+    border: none;
+    margin-left:300px;
+    color: #fff;
+    margin-top:5px;
+}

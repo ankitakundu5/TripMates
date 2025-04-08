@@ -1,0 +1,158 @@
+.service-item{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+}
+.services, .packages, .why-us, .map, .destinations, .testimonials, .newsletter {
+    text-align: center;
+    padding: 50px 20px;
+}
+.service-grid, .package-grid, .benefits-grid, .destination-grid, .testimonial-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+ .benefits-item, .destination-item, .testimonial-item {
+    background: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+}
+
+.service-item,.package-item{
+    margin:50px;
+    display: flex;
+    flex-flow:column;
+    justify-content: center;
+    align-items: center;
+    padding:30px;
+     border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.map img {
+    width: 200px;
+}
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.newsletter {
+    background: gray;
+    padding: 50px;
+    color: white;
+}
+
+#card-container{
+    padding:30px;
+    margin:10px;
+
+  
+}
+#pack{
+    margin-left:auto;
+    margin-right:auto;
+   display: flex;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
+  
+
+
+
+}
+
+.package-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: 0.3s;
+   margin: 20px;
+  }
+
+  .package-card:hover {
+    transform: scale(1.02);
+  }
+
+  .package-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .package-card-content {
+    padding: 15px;
+  }
+
+  .badge-top {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: darkorange;
+    color: white;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+
+  .card-location {
+    color: orangered;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .card-title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+
+ 
+
+  .bg-pink {
+      background-color: white;
+  }
+  .title-container {
+      text-align: center;
+      padding: 2rem 0;
+  }
+  .brand-text {
+      color: #ff8459;
+      font-weight: bold;
+  }
+  .subtitle {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #666;
+  }
+  .feature-card {
+      text-align: center;
+      padding: 20px;
+      height: 100%;
+  }
+  .circle-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+  }
+  .circle-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  h3 {
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+  .feature-text {
+      color: #666;
+      font-size: 0.95rem;
+  }

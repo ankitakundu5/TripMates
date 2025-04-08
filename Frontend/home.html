@@ -5,203 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripMates</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <style>
-        /* Header Styles */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        
-        .header {
-            background-color: #2E2E2E;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 50px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff7f27;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .nav-links a:hover {
-            color: #ff7f27;
-        }
-
-        .nav-links i {
-            font-size: 18px;
-        }
-
-        .login-btn {
-            background-color: #ff7f27;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: none;
-            font-size: 14px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .login-btn:hover {
-            background-color: #e66a1a;
-        }
-        .hero {
-            background: url('image.png') no-repeat center/cover;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-shadow: 2px 2px 5px black;
-        }
-        .search-bar {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .search-bar input {
-            padding: 10px;
-            width: 250px;
-        }
-        .search-bar button {
-            padding: 10px;
-            background: orange;
-            border: none;
-            cursor: pointer;
-        }
-        .services, .packages, .why-us, .map, .destinations, .testimonials, .newsletter {
-            text-align: center;
-            padding: 50px 20px;
-        }
-        .service-grid, .package-grid, .benefits-grid, .destination-grid, .testimonial-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .service-item, .package-item, .benefits-item, .destination-item, .testimonial-item {
-            background: lightgray;
-            padding: 20px;
-            border-radius: 10px;
-            width: 150px;
-        }
-        .map img {
-            width: 200px;
-        }
-        footer {
-            background: black;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        .newsletter {
-            background: gray;
-            padding: 50px;
-            color: white;
-        }
-    </style>
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Bootstrap JS (with Popper) -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <link rel="stylesheet" href="./styles/home.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="logo">TripMates</div>
-        <nav class="nav-links">
-            <a href="#"><i class="fas fa-home"></i> Home</a>
-            <a href="#"><i class="fas fa-suitcase"></i> Packages</a>
-            <a href="#"><i class="fas fa-search"></i> Search</a>
-            <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
-        </nav>
-        <button class="login-btn">Signup / Login</button>
-    </header>
-    <section class="hero">
-        <h2>Explore the World</h2>
-        <div class="search-bar">
-            <input type="text" placeholder="Search Destinations">
-            <button>Search</button>
-        </div>
-    </section>
-<
+    <div id="header-container"></div>
+   
+    <script>
+      fetch('header.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('header-container').innerHTML = data;
+        });
+    </script>
+
     <section class="services">
         <h2>TripMates Holidays</h2>
         <div class="service-grid">
             <div class="service-item">
-                <img src="https://img.icons8.com/?size=48&id=17569&format=png" alt="Beach" style="width:50px;"><br>Beach Trips
+                <img src="assets/icons8-island-100.png" alt="Beach" style="width:100px;"><br>Beach Trips
             </div>
             <div class="service-item">
-                <img src="https://img.icons8.com/doodle/64/mountain.png" alt="Mountains" style="width:50px;"><br>Mountain Treks
+                <img src="assets/icons8-mountain-96.png" alt="Mountains" style="width:100;"><br>Mountain Treks
             </div>
             <div class="service-item">
-                <img src="https://img.icons8.com/?size=48&id=104084&format=png" alt="City Tour" style="width:50px;"><br>City Tours
+                <img src="assets/icons8-city-96.png" alt="City Tour" style="width:100px;"><br>City Tours
             </div>
             <div class="service-item">
-                <img src="https://img.icons8.com/doodle/64/parachute.png" alt="Adventure" style="width:50px;"><br>Adventure Sports
+                <img src="assets/icons8-adventure-96.png" alt="Adventure" style="width:100px;"><br>Adventure Sports
             </div>
-            <div class="service-item">
-                <img src="https://img.icons8.com/doodle/64/cruise-ship.png" alt="Cruise" style="width:50px;"><br>Cruise Tours
-            </div>
-            <div class="service-item">
-                <img src="https://img.icons8.com/doodle/64/lion.png" alt="Wildlife" style="width:50px;"><br>Wildlife Safaris
-            </div>
+          
         </div>
     </section>
+
+      
+       <div class="col-md-9 mb-5 " id="pack">
+        <h3><strong>Our Best Packages</strong></h3>
+  
+        <div class="row g-10" id="card-container">
+      
+        </div>
+      </div>
+
+    <script>
+      const fakeData = [
+        {
+          title: "Kalsubai Peak Trek",
+          location: "India, Maharashtra",
+          category: "Trekking",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Driftwood Lodge",
+          location: "India, Mumbai",
+          category: "Trekking",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        }
+
+      ];
     
-    <section class="packages">
-        <h2>Our Bestseller Packages</h2>
-        <div class="package-grid">
-            <div class="package-item">
-                <img src="https://plus.unsplash.com/premium_photo-1664116707664-012c2fd94fba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3
-                fDB8MHxzZWFyY2h8OXx8a2Fsc3ViYWklMjBwZWFrfGVufDB8fDB8fHww" alt="Kalsubai Peak" style="width:100%; border-radius: 10px;"><br>
-                <strong>Kalsubai Peak</strong>
+      const cardContainer = document.getElementById("card-container");
+    
+      fakeData.forEach(data => {
+        const card = `
+          <div class="col-md-4">
+            <div class="position-relative package-card">
+              <span class="badge-top">${data.category}</span>
+              <img src="${data.image}" alt="${data.title}">
+              <div class="package-card-content">
+                <div class="card-location">${data.location}</div>
+                <div class="card-title">${data.title}</div>
+              </div>
             </div>
-            <div class="package-item">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach Paradise" style="width:100%; border-radius: 10px;"><br>
-                <strong>Beach Paradise</strong>
-            </div>
-            <div class="package-item">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Tropical Retreat" style="width:100%; border-radius: 10px;"><br>
-                <strong>Tropical Retreat</strong>
+          </div>
+        `;
+        cardContainer.innerHTML += card;
+      });
+    </script>
+    
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TripMates Section</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+      
+    </head>
+    <body>
+        <div class="container-fluid bg-pink py-5">
+            <div class="container">
+                <div class="title-container">
+                    <h2 class="mb-3">Why start with <span class="brand-text">TripMates</span>?</h2>
+                    <p class="subtitle mb-5">For over 20 years we have been helping travelers like you to live profound adventure and life experiences around the world. We can guarantee you:</p>
+                </div>
+                
+                <div class="row">
+                    <!-- Feature 1 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <div class="circle-img">
+                                <img src="/api/placeholder/400/400" alt="Underwater diving scene">
+                            </div>
+                            <h3>Exclusive activities</h3>
+                            <p class="feature-text">Not just surfing. With us you can choose to do yoga, diving, hiking and much more. We customize your trip with what you love most.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <div class="circle-img">
+                                <img src="/api/placeholder/400/400" alt="Orange van on beach">
+                            </div>
+                            <h3>Destinations</h3>
+                            <p class="feature-text">Waves for different levels, safety, reliability and respect for the local culture. This is what you can expect from Surf Camp destinations and experiences.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="col-md-4 mb-4">
+                        <div class="feature-card">
+                            <div class="circle-img">
+                                <img src="/api/placeholder/400/400" alt="People watching sunset">
+                            </div>
+                            <h3>Suitable for everyone</h3>
+                            <p class="feature-text">Local instructors and surfers will take you to the best waves for you. Whether you have never picked up a board or are already at an advanced level.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
     
-    
-    <section class="why-us">
-        <h2>Why start with TripMates?</h2>
-        <div class="benefits-grid">
-            <div class="benefits-item">       
-            <img src="https://img.icons8.com/?size=80&id=EbDZhzd3Tn3Y&format=png"  style="width:100%; border-radius:10px;">
-            <p>Best Deals</p>
-            </div>
-            <div class="benefits-item">
-            <img src="https://img.icons8.com/?size=80&id=B1TajRDw0vmK&format=png"  style="width:100%; border-radius:10px;">
-            <p>24/7 Support</p>
-            </div>
-            <div class="benefits-item">
-            <img src="https://img.icons8.com/?size=80&id=bQrAaR2mjXiX&format=png"  style="width:100%; border-radius:10px;">
-            <p>Handpicked Destinations</p>
-            </div>
-        </div>
-    </section>
+
     <section class="map">
         <h2>Choose your next destination</h2>
         <img src="https://www.mapsofindia.com/images2/india-map-2019.jpg" alt="India Map">
@@ -278,14 +250,20 @@
             <!-- </div> -->
           </div>
     </section>
-    <section class="newsletter">
-        <h2>Sign up for the Newsletter</h2>
-        <input type="text" placeholder="Name and Surname"> <br>
-        <input type="email" placeholder="Enter your email"> <br>
-        <button>Subscribe</button>
-    </section>
-    <footer>
-        <p>&copy; 2025 TripMates. All Rights Reserved.</p>
-    </footer>
+
+
+
+    <div id="footer-container"></div>
+   
+    <script>
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+        });
+     </script>
+   
+
+
 </body>
 </html>
