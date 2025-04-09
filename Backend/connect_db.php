@@ -1,12 +1,25 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$database = 'tripmates';
+$servername = "localhost";
+$username = "root";
+$password = "";
 
-$conn = new mysqli($host, $user, $password, $database);
+$conn = mysqli_connect($servername, $username, $password);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if(!$conn )
+{
+  die('Could not connect: ' . mysqli_connect_error());
 }
+echo 'Connected successfully <br/>';
+
+// PHP Mysqli Create Database Example
+
+$sql = 'CREATE Database IF NOT EXISTS tripmates';
+if(mysqli_query( $conn,$sql)){
+  echo "Database created successfully.";
+}
+else{
+echo "Sorry, database creation failed ".mysqli_error($conn);
+}
+
+mysqli_close($conn);
 ?>
