@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = ""; // Default for XAMPP
-$dbname = "travel_app";
+$password = "";
+$dbname = "tripmates";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
