@@ -1,27 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tripmates";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Create database if not exists
-$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-if ($conn->query($sql) === TRUE) {
-    echo "Database created successfully or already exists.<br>";
-} else {
-    die("Error creating database: " . $conn->error);
-}
+require_once 'connect_db.php';
 
 // Select the database
-$conn->select_db($dbname);
+$dbname = 'tripmates';
+if (!$conn->select_db($dbname)) {
+    die("Failed to select database '$dbname': " . $conn->error);
+}
 
 // Array of SQL table creation statements
 $tables = [
@@ -106,11 +90,12 @@ $tables = [
 // Execute each SQL statement
 foreach ($tables as $index => $sql) {
     if ($conn->query($sql) === TRUE) {
-        echo "Table " . ($index + 1) . " created successfully.<br>";
+        echo "✅ Table " . ($index + 1) . " created successfully.<br>";
     } else {
-        echo "Error creating table " . ($index + 1) . ": " . $conn->error . "<br>";
+        echo "❌ Error creating table " . ($index + 1) . ": " . $conn->error . "<br>";
     }
 }
 
+// Close the connection
 $conn->close();
 ?>
