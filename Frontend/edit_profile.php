@@ -19,15 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validation
     if (!preg_match('/^\d{10}$/', $phone)) {
-        $error = "❌ Phone number must be exactly 10 digits.";
+        $error = "Phone number must be exactly 10 digits.";
     } elseif (!filter_var($age, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1, "max_range" => 120]])) {
-        $error = "❌ Age must be a valid number between 1 and 120.";
+        $error = "Age must be a valid number between 1 and 120.";
     } else {
         $stmt = $conn->prepare("UPDATE users SET name=?, age=?, phone=?, gender=? WHERE user_id=?");
         $stmt->bind_param("ssssi", $name, $age, $phone, $gender, $user_id);
 
         if ($stmt->execute()) {
-            $success = "✅ Profile updated successfully!";
+            $success = "Profile updated successfully!";
             // Optionally update session data
             $_SESSION['name'] = $name;
             $_SESSION['age'] = $age;
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: profile.php");
             exit;
         } else {
-            $error = "❌ Failed to update profile.";
+            $error = "Failed to update profile.";
         }
 
         $stmt->close();
