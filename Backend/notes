@@ -1,0 +1,87 @@
+get packages
+get package
+add user
+get user info (profile page)
+add booking
+change booking status 
+change payment status
+
+<!-- 
+    <script>
+      const fakeData = [
+        {
+          title: "Kalsubai Peak Trek",
+          location: "India, Maharashtra",
+          category: "Trekking",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Driftwood Lodge",
+          location: "India, Mumbai",
+          category: "Trekking",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        },
+        {
+          title: "Valley Camping",
+          location: "India, Himachal Pradesh",
+          category: "Adventure",
+          image: "assets/beach.jpg"
+        }
+
+      ];
+    
+      const cardContainer = document.getElementById("card-container");
+    
+      fakeData.forEach(data => {
+        const card = `
+          <div class="col-md-4">
+            <div class="position-relative package-card">
+              <span class="badge-top">${data.category}</span>
+              <img src="${data.image}" alt="${data.title}">
+              <div class="package-card-content">
+                <div class="card-location">${data.location}</div>
+                <div class="card-title">${data.title}</div>
+              </div>
+            </div>
+          </div>
+        `;
+        cardContainer.innerHTML += card;
+      });
+    </script>
+     -->
+<!--     
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TripMates Section</title>
+       
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+      
+    </head>
+    <body> -->

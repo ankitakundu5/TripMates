@@ -17,7 +17,7 @@
     <div id="header-container"></div>
    
     <script>
-      fetch('header.html')
+      fetch('header.php')
         .then(res => res.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
@@ -28,32 +28,26 @@
 
 <div class="container mt-5 mb-5">
     <div class="row">
-      <!-- Left Content -->
+
       <div class="col-lg-8">
-        <h2 class="package-title">Kalabahal Peak Trek - Panoramic Bhandardara's Highest Peak</h2>
-        <p class="package-subtitle">Experience the beauty of nature with this exclusive trek package</p>
+      <?php
 
-        <ul class="mt-4">
-          <li>Experience the thrill of trekking to the highest peak in Bhandardara region</li>
-          <li>Enjoy breathtaking panoramic views of lush green valleys and surrounding mountains</li>
-          <li>Professional trek guides to ensure safety and share interesting facts about the region</li>
-          <li>Comfortable camping facilities with all necessary equipment provided</li>
-          <li>Delicious local cuisine prepared fresh at the campsite</li>
-          <li>Transportation from meeting point to trek base and back included</li>
-          <li>Photography opportunities at scenic viewpoints along the trail</li>
-          <li>Small group experience - limited to 12 trekkers per batch</li>
-          <li>Suitable for beginners with moderate fitness level</li>
-        </ul>
+   require_once '../Backend/connect_db.php';
 
-        <p class="mt-4">
-          Embark on an unforgettable journey to Kalabahal Peak, standing tall at 1,646 meters above sea level. 
-          This trek offers a perfect blend of adventure, nature, and camaraderie as you make your way through 
-          diverse landscapes, including dense forests, open grasslands, and rocky terrain.
-        </p>
-        <p>
-          The moderate difficulty level makes it ideal for both beginners and experienced trekkers looking 
-          for a refreshing weekend getaway from the hustle and bustle of city life.
-        </p>
+    if (isset($_GET['id'])) {
+        $id = intval($_GET['id']); // basic sanitization
+
+        $sql = "SELECT * FROM packages WHERE package_id = $id";
+        $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        echo '
+     
+        <h1 class="package-title">'.htmlspecialchars($row['name']).'</h1>
+        <p class="package-subtitle">'.($row['description']).'</p>
+
+       
       </div>
 
       <!-- Right Sidebar Price Box -->
@@ -61,23 +55,35 @@
         <div class="price-card">
           <div class="price-box-header">All Details:</div>
           <ul class="list-unstyled mt-3 mb-4">
-            <li><i class="bi bi-calendar icon"></i>11/01/2024 to 12/01/2024</li>
-            <li><i class="bi bi-people icon"></i>Group of 10</li>
-            <li><i class="bi bi-person-check icon"></i>18 yrs and above</li>
+            <li><i class="bi bi-calendar icon"></i>'.htmlspecialchars($row['start_date']).' to '.htmlspecialchars($row['end_date']).'</li>
+            <li><i class="bi bi-people icon"></i>'.htmlspecialchars($row['totalsize']).'</li>
+            <li><i class="bi bi-person-check icon"></i>'.htmlspecialchars($row['agegroup']).'</li>
             <li><i class="bi bi-geo-alt icon"></i>1,000 ft altitude</li>
           </ul>
-          <h5 class="fw-bold mb-3">₹2,499 per person</h5>
+          <h5 class="fw-bold mb-3"> ₹'.htmlspecialchars($row['price']).'</h5>
           <button class="booking-btn w-100">Book Now</button>
         </div>
       </div>
     </div>
   </div>
 
+      
+
+         ';
+    }
+       else {
+        echo "No package with this id";
+
+        }
+        } else {
+            echo "No ID provided.";
+        }
+
+      
+        ?>
+       
         
-        <!-- Landscape Image -->
-        <img src="assets/mountain.jpg" alt="Kalabahal Peak Landscape" class="landscape-image">
-        
-        <!-- Similar Packages -->
+     
         <div class="similar-packages mr-20 p-10">
             <h2 class="section-title">More Like This</h2>
             <div class="package-cards  mr-20 p-10">
@@ -128,11 +134,10 @@
             </div>
         </div>
         
-        <!-- Newsletter -->
-       
+    
     </div>
     
-    <!-- Footer -->
+
     <div id="footer-container"></div>
    
     <script>

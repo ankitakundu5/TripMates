@@ -14,8 +14,8 @@ CREATE TABLE users (
 CREATE TABLE packages (
     package_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    description TEXT,
-    destination VARCHAR(255) NOT NULL,
+    description LONGTEXT,
+    destination TEXT NOT NULL,
     activities TEXT,  
     price INT NOT NULL,
     start_date DATE NOT NULL,

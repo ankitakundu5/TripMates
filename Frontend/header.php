@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="./styles/header.css">
    
 </head>
-<body id="home">
-
+<body>
+ 
     <header class="hero-section d-flex flex-column">
    
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent px-4 pt-3">
@@ -58,28 +58,7 @@
       </div>
     </header>
 
-    <script>
-     document.addEventListener('DOMContentLoaded', function() {
-    // Check if we're NOT on the home page
-    if (document.body.id !== 'home') {
-        // Make sure this element exists before trying to modify it
-        const searchBar = document.querySelector('.search-bar');
-        if (searchBar) {
-            searchBar.style.display = 'none';
-        }
-        
-        // Create or modify the header-content element if needed
-        let headerContent = document.querySelector('#header-content');
-        if (!headerContent) {
-            // Create the element if it doesn't exist
-            headerContent = document.createElement('div');
-            headerContent.id = 'header-content';
-            document.querySelector('header').appendChild(headerContent);
-        }
-        headerContent.innerHTML = '<p class="text-white">Adventure Awaits</p>';
-    }
-});
-  </script>
+    
   
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

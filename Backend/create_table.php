@@ -24,14 +24,15 @@ $tables = [
 "CREATE TABLE IF NOT EXISTS packages (
     package_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
+    imageUrl VARCHAR NOT NULL,
     description TEXT,
-    destination VARCHAR(255) NOT NULL,
+    destination TEXT NOT NULL,
     activities TEXT,  
     price INT NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,   
     size INT NOT NULL,
-    totalsize INT NOT NULL,
+    totalsize VARCHAR NOT NULL,
     agegroup INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )",
@@ -90,9 +91,9 @@ $tables = [
 // Execute each SQL statement
 foreach ($tables as $index => $sql) {
     if ($conn->query($sql) === TRUE) {
-        echo "✅ Table " . ($index + 1) . " created successfully.<br>";
+        echo " Table " . ($index + 1) . " created successfully.<br>";
     } else {
-        echo "❌ Error creating table " . ($index + 1) . ": " . $conn->error . "<br>";
+        echo " Error creating table " . ($index + 1) . ": " . $conn->error . "<br>";
     }
 }
 

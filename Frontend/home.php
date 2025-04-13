@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripMates</title>
-    <link rel="stylesheet" href="styles.css">
+    
       <!-- Bootstrap CSS -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- Bootstrap JS (with Popper) -->
@@ -16,7 +17,7 @@
     <div id="header-container"></div>
    
     <script>
-      fetch('header.html')
+      fetch('header.php')
         .then(res => res.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
@@ -45,90 +46,38 @@
       
        <div class="col-md-9 mb-5 " id="pack">
         <h3><strong>Our Best Packages</strong></h3>
+        <?php
+        
+        require_once '../Backend/connect_db.php';
+        
+        $sql = "SELECT * FROM packages";
+        $result = $conn->query($sql);
+        
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+              
+                echo '
+                <div class="col-md-4">
+                    <div class="position-relative package-card">
+                        <span class="badge-top">'.htmlspecialchars($row['activities']).'</span>
+                        <img src="'.htmlspecialchars($row['imageUrl']).'" alt="'.htmlspecialchars($row['name']).'" style="width:100%; height:200px; object-fit:cover;">
+                        <div class="package-card-content">
+                            <div class="card-location">'.htmlspecialchars($row['destination']).'</div>
+                            <div class="card-title">'.htmlspecialchars($row['name']).'</div>
+                        </div>
+                    </div>
+                </div>';
+            }
+        } else {
+            echo "No packages found.";
+        }
+  ?>
   
         <div class="row g-10" id="card-container">
       
         </div>
       </div>
 
-    <script>
-      const fakeData = [
-        {
-          title: "Kalsubai Peak Trek",
-          location: "India, Maharashtra",
-          category: "Trekking",
-          image: "assets/beach.jpg"
-        },
-        {
-          title: "Driftwood Lodge",
-          location: "India, Mumbai",
-          category: "Trekking",
-          image: "assets/beach.jpg"
-        },
-        {
-          title: "Valley Camping",
-          location: "India, Himachal Pradesh",
-          category: "Adventure",
-          image: "assets/beach.jpg"
-        },
-        {
-          title: "Valley Camping",
-          location: "India, Himachal Pradesh",
-          category: "Adventure",
-          image: "assets/beach.jpg"
-        },
-        {
-          title: "Valley Camping",
-          location: "India, Himachal Pradesh",
-          category: "Adventure",
-          image: "assets/beach.jpg"
-        },
-        {
-          title: "Valley Camping",
-          location: "India, Himachal Pradesh",
-          category: "Adventure",
-          image: "assets/beach.jpg"
-        },
-        {
-          title: "Valley Camping",
-          location: "India, Himachal Pradesh",
-          category: "Adventure",
-          image: "assets/beach.jpg"
-        }
-
-      ];
-    
-      const cardContainer = document.getElementById("card-container");
-    
-      fakeData.forEach(data => {
-        const card = `
-          <div class="col-md-4">
-            <div class="position-relative package-card">
-              <span class="badge-top">${data.category}</span>
-              <img src="${data.image}" alt="${data.title}">
-              <div class="package-card-content">
-                <div class="card-location">${data.location}</div>
-                <div class="card-title">${data.title}</div>
-              </div>
-            </div>
-          </div>
-        `;
-        cardContainer.innerHTML += card;
-      });
-    </script>
-    
-    
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>TripMates Section</title>
-        <!-- Bootstrap CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-      
-    </head>
-    <body>
         <div class="container-fluid bg-pink py-5">
             <div class="container">
                 <div class="title-container">
@@ -137,7 +86,7 @@
                 </div>
                 
                 <div class="row">
-                    <!-- Feature 1 -->
+              
                     <div class="col-md-4 mb-4">
                         <div class="feature-card">
                             <div class="circle-img">
@@ -147,8 +96,7 @@
                             <p class="feature-text">Authentic experiences, safety, reliability, and deep respect for local traditions—this is what you can expect from our travel destinations and curated adventures</p>
                         </div>
                     </div>
-                    
-                    <!-- Feature 2 -->
+              
                     <div class="col-md-4 mb-4">
                         <div class="feature-card">
                             <div class="circle-img">
@@ -159,7 +107,7 @@
                         </div>
                     </div>
                     
-                    <!-- Feature 3 -->
+                  
                     <div class="col-md-4 mb-4">
                         <div class="feature-card">
                             <div class="circle-img">
@@ -221,9 +169,9 @@
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="testimonial-card text-center">
-                    <img src="/api/placeholder/120/120" alt="Oliver Wright" class="testimonial-img">
-                    <h4 class="mb-1">Oliver Wright</h4>
-                    <p class="text-muted">Visited: India</p>
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.W8pbMr2kaHuKEMhzf3gfNAAAAA&pid=Api&P=0&h=180" alt="Jatin Singh" class="testimonial-img">
+                    <h4 class="mb-1">Jatin Singh</h4>
+               
                     <div class="divider"></div>
                     <p class="mb-0">"Convenient for booking short tours with flexible cancellation, though some options are pricey."</p>
                 </div>
@@ -231,9 +179,8 @@
             
             <div class="col-md-4 mb-4">
                 <div class="testimonial-card text-center">
-                    <img src="/api/placeholder/120/120" alt="Sophia Martinez" class="testimonial-img">
-                    <h4 class="mb-1">Sophia Martinez</h4>
-                    <p class="text-muted">Visited: India</p>
+                    <img src="https://images.pexels.com/photos/938639/pexels-photo-938639.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sameer" class="testimonial-img">
+                    <h4 class="mb-1">Sameer</h4>
                     <div class="divider"></div>
                     <p class="mb-0">"Great for curated local tours, but last-minute availability can be an issue."</p>
                 </div>
@@ -241,9 +188,9 @@
             
             <div class="col-md-4 mb-4">
                 <div class="testimonial-card text-center">
-                    <img src="/api/placeholder/120/120" alt="Jack Blo" class="testimonial-img">
-                    <h4 class="mb-1">Jack Blo</h4>
-                    <p class="text-muted">Visited: India</p>
+                    <img src="https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sanskriti" class="testimonial-img">
+                    <h4 class="mb-1">Sanskriti</h4>
+                 
                     <div class="divider"></div>
                     <p class="mb-0">"Budget-friendly for short trips, with discounts."</p>
                 </div>
