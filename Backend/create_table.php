@@ -17,7 +17,9 @@ $tables = [
     password TEXT NOT NULL,
     phone VARCHAR(20),
     gender VARCHAR(20), 
-    age INT, 
+    age INT,
+    reset_token VARCHAR(255),
+    token_expiry DATETIME,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )",
 
@@ -27,10 +29,10 @@ $tables = [
     imageUrl VARCHAR(255) NOT NULL,
     description TEXT,
     destination TEXT NOT NULL,
-    activities TEXT,  
+    activities TEXT,
     price INT NOT NULL,
     start_date DATE NOT NULL,
-    end_date DATE NOT NULL,   
+    end_date DATE NOT NULL,
     size INT NOT NULL,
     totalsize INT NOT NULL,
     agegroup INT,
@@ -80,7 +82,7 @@ $tables = [
     booking_id INT,
     user_id INT,
     amount INT NOT NULL,
-    payment_status VARCHAR(50) DEFAULT 'pending',      
+    payment_status VARCHAR(50) DEFAULT 'pending',
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (booking_id) REFERENCES bookings(booking_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
