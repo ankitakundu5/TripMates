@@ -44,7 +44,7 @@
             </ul>
           </div>
           <div class="d-flex">
-            <a href="#" class="btn btn-orange">Signup / Login</a>
+            <a href="signup.php" class="btn btn-orange">Signup / Login</a>
           </div>
         </div>
       </nav>
