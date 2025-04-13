@@ -24,7 +24,7 @@ $tables = [
 "CREATE TABLE IF NOT EXISTS packages (
     package_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    imageUrl VARCHAR NOT NULL,
+    imageUrl VARCHAR(255) NOT NULL,
     description TEXT,
     destination TEXT NOT NULL,
     activities TEXT,  
@@ -32,7 +32,7 @@ $tables = [
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,   
     size INT NOT NULL,
-    totalsize VARCHAR NOT NULL,
+    totalsize INT NOT NULL,
     agegroup INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )",
