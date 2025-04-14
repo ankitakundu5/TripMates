@@ -14,15 +14,8 @@
 </head>
 <body>
 
-    <div id="header-container"></div>
    
-    <script>
-      fetch('header.php')
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById('header-container').innerHTML = data;
-        });
-    </script>
+    <?php include 'header.php'; ?>
 
 
 

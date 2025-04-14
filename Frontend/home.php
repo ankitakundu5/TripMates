@@ -58,6 +58,7 @@
             while ($row = $result->fetch_assoc()) {
               
                 echo '
+                <a href="packages.php?id='.htmlspecialchars($row['package_id']).'">
                 <div class="">
                     <div class="position-relative package-card">
                         <span class="badge-top">'.htmlspecialchars($row['activities']).'</span>
@@ -67,7 +68,9 @@
                             <div class="card-title">'.htmlspecialchars($row['name']).'</div>
                         </div>
                     </div>
-                </div>';
+                </div>
+                </a>'
+                ;
 
 
             }

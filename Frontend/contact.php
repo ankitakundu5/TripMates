@@ -12,16 +12,9 @@
 
 </head>
 <body>
-    <div id="header-container"></div>
    
-    <script>
-      fetch('header.html')
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById('header-container').innerHTML = data;
-        });
-    </script>
-
+   
+    <?php include 'header.php'; ?>
 
   <div class="container my-5">
     <h2>Contacts and Info</h2>

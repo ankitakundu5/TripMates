@@ -120,7 +120,7 @@ $stmt->close();
 
                         <?php if ($row['status'] == 'pending') { ?>
                           <form action="payment.php" method="POST" style="display:inline;">
-                            <?php echo htmlspecialchars($row['booking_id']);?>
+                
                               <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($row['booking_id']); ?>">
                               <button type="submit" class="btn btn-booking btn-booking-green">PAY</button>
                           </form>
