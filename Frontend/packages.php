@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    require_once '../Backend/connect_db.php';
+
+    //rediredts to login (no user in session)
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php");
+        exit;
+    }
+
+    $user = [
+        'name' => '',
+        'age' => '',
+        'email' => '',
+        'phone' => '',
+        'gender' => ''
+    ];
+
+    $user_id = $_SESSION['user_id'];
+   
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,55 +55,53 @@
       <div class="col-lg-8">
       <?php
 
-   require_once '../Backend/connect_db.php';
+require_once '../Backend/connect_db.php';
 
-    if (isset($_GET['id'])) {
-        $id = intval($_GET['id']); // basic sanitization
+$user_id = $_SESSION['user_id']; 
 
-        $sql = "SELECT * FROM packages WHERE package_id = $id";
-        $result = $conn->query($sql);
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']); 
+
+    $sql = "SELECT * FROM packages WHERE package_id = $id";
+    $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
+
         echo '
-     
-        <h1 class="package-title">'.htmlspecialchars($row['name']).'</h1>
-        <p class="package-subtitle">'.($row['description']).'</p>
-
-       
-      </div>
-
-      <!-- Right Sidebar Price Box -->
-      <div class="col-lg-4 ">
-        <div class="price-card">
-          <div class="price-box-header">All Details:</div>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li><i class="bi bi-calendar icon"></i>'.htmlspecialchars($row['start_date']).' to '.htmlspecialchars($row['end_date']).'</li>
-            <li><i class="bi bi-people icon"></i>'.htmlspecialchars($row['totalsize']).'</li>
-            <li><i class="bi bi-person-check icon"></i>'.htmlspecialchars($row['agegroup']).'</li>
-            <li><i class="bi bi-geo-alt icon"></i>1,000 ft altitude</li>
-          </ul>
-          <h5 class="fw-bold mb-3"> ₹'.htmlspecialchars($row['price']).'</h5>
-          <button class="booking-btn w-100">Book Now</button>
+        <h1 class="package-title">' . htmlspecialchars($row['name']) . '</h1>
+        <p class="package-subtitle">' . htmlspecialchars($row['description']) . '</p>
         </div>
-      </div>
-    </div>
-  </div>
 
-      
+        <div class="col-lg-4">
+          <div class="price-card">
+            <div class="price-box-header">All Details:</div>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li><i class="bi bi-calendar icon"></i> ' . htmlspecialchars($row['start_date']) . ' to ' . htmlspecialchars($row['end_date']) . '</li>
+              <li><i class="bi bi-people icon"></i> ' . htmlspecialchars($row['totalsize']) . '</li>
+              <li><i class="bi bi-person-check icon"></i> ' . htmlspecialchars($row['agegroup']) . '</li>
+              <li><i class="bi bi-geo-alt icon"></i> 1,000 ft altitude</li>
+            </ul>
+            <h5 class="fw-bold mb-3"> ₹' . htmlspecialchars($row['price']) . '</h5>
 
-         ';
+            <form action="./book.php" method="POST">
+              <input type="hidden" name="user_id" value="' . $user_id . '">
+              <input type="hidden" name="package_id" value="' . htmlspecialchars($row['package_id']) . '">
+              <input type="hidden" name="total_price" value="' . htmlspecialchars($row['price']) . '">
+              <button class="booking-btn w-100">Book Now</button>
+            </form>
+          </div>
+        </div>
+        </div>
+        </div>';
+    } else {
+        echo "No package with this ID.";
     }
-       else {
-        echo "No package with this id";
+} else {
+    echo "No ID provided.";
+}
+?>
 
-        }
-        } else {
-            echo "No ID provided.";
-        }
-
-      
-        ?>
        
         
      

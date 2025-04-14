@@ -5,6 +5,13 @@
     width: 300px;
     height: 300px;
 }
+h3{
+  display: flex;
+  flex-flow:row;
+  justify-content: center;
+  align-items: center;
+  margin:10px;
+}
 .services, .packages, .why-us, .map, .destinations, .testimonials, .newsletter {
     text-align: center;
     padding: 50px 20px;
@@ -16,7 +23,7 @@
     flex-wrap: wrap;
 }
  .benefits-item, .destination-item, .testimonial-item {
-    background: lightgray;
+    background: white;
     padding: 20px;
     border-radius: 10px;
     width: 150px;
@@ -48,41 +55,68 @@
 
   
 }
-#pack{
-    margin-left:auto;
-    margin-right:auto;
-     display: flex;
-   flex-flow: row;
-   justify-content: center;
-   align-items: center; 
-  
-  
 
+#pack {
+  display: flex;
+  flex-wrap: wrap;
+  
+  justify-content: center; 
+  align-items: center;
 
 
 }
 
 .package-card {
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    transition: 0.3s;
-   margin: 20px;
-  }
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  margin:30px
+}
 
-  .package-card:hover {
-    transform: scale(1.02);
-  }
+.package-card:hover {
+  transform: scale(1.05); 
+}
 
-  .package-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
+.package-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
 
-  .package-card-content {
-    padding: 15px;
+.package-card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-location {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+      flex: 0 0 100%; 
+      max-width: 100%;
   }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .col-md-4 {
+      flex: 0 0 48%; 
+      max-width: 48%;
+  }
+}
 
   .badge-top {
     position: absolute;
@@ -204,12 +238,13 @@
   
   .destination-item {
     width: 100%;
+    
   }
   
   .destination-card {
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   

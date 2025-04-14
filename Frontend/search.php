@@ -17,7 +17,7 @@
     <div id="header-container"></div>
    
     <script>
-      fetch('header.html')
+      fetch('header.php')
         .then(res => res.text())
         .then(data => {
           document.getElementById('header-container').innerHTML = data;
@@ -30,7 +30,7 @@
     <div class="container-fluid mt-5">
       <div class="row">
    
-        <div class="col-md-3 ml-20 p-20">
+        <div class=" back col-md-3 ml-20 p-20">
           <div class="search-box mb-4">
             <h6>Choose where to go:</h6>
             <input type="text" class="form-control mb-3" placeholder="All around India">
@@ -74,77 +74,42 @@
   
         <!-- Right Cards -->
         <div class="col-md-9 mb-5 ">
-          
+        <div id="pack">
+        <?php
+        
+        require_once '../Backend/connect_db.php';
+        
+        $sql = "SELECT * FROM packages";
+        $result = $conn->query($sql);
+    
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+              
+                echo '
+                <div class="">
+                    <div class="position-relative package-card">
+                        <span class="badge-top">'.htmlspecialchars($row['activities']).'</span>
+                        <img src="'.htmlspecialchars($row['imageUrl']).'" alt="'.htmlspecialchars($row['name']).'" style="width:100%; height:200px; object-fit:cover;">
+                        <div class="package-card-content">
+                            <div class="card-location">'.htmlspecialchars($row['destination']).'</div>
+                            <div class="card-title">'.htmlspecialchars($row['name']).'</div>
+                        </div>
+                    </div>
+                </div>';
+
+
+            }
+        } else {
+            echo "No packages found.";
+        }
+       
+  ?>
+ </div>
           <div class="row g-4" id="card-container">
         
           </div>
         </div>
-        
-        <script>
-          const fakeData = [
-            {
-              title: "Kalsubai Peak Trek",
-              location: "India, Maharashtra",
-              category: "Trekking",
-              image: "assets/beach.jpg"
-            },
-            {
-              title: "Driftwood Lodge",
-              location: "India, Mumbai",
-              category: "Trekking",
-              image: "assets/beach.jpg"
-            },
-            {
-              title: "Valley Camping",
-              location: "India, Himachal Pradesh",
-              category: "Adventure",
-              image: "assets/beach.jpg"
-            },
-            {
-              title: "Valley Camping",
-              location: "India, Himachal Pradesh",
-              category: "Adventure",
-              image: "assets/beach.jpg"
-            },
-            {
-              title: "Valley Camping",
-              location: "India, Himachal Pradesh",
-              category: "Adventure",
-              image: "assets/beach.jpg"
-            },
-            {
-              title: "Valley Camping",
-              location: "India, Himachal Pradesh",
-              category: "Adventure",
-              image: "assets/beach.jpg"
-            },
-            {
-              title: "Valley Camping",
-              location: "India, Himachal Pradesh",
-              category: "Adventure",
-              image: "assets/beach.jpg"
-            }
 
-          ];
-        
-          const cardContainer = document.getElementById("card-container");
-        
-          fakeData.forEach(data => {
-            const card = `
-              <div class="col-md-4">
-                <div class="position-relative package-card">
-                  <span class="badge-top">${data.category}</span>
-                  <img src="${data.image}" alt="${data.title}">
-                  <div class="package-card-content">
-                    <div class="card-location">${data.location}</div>
-                    <div class="card-title">${data.title}</div>
-                  </div>
-                </div>
-              </div>
-            `;
-            cardContainer.innerHTML += card;
-          });
-        </script>
         
       </div>
     </div>

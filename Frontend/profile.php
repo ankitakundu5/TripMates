@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Fetch user data from DB
+
 $user = [
     'name' => '',
     'age' => '',
@@ -72,13 +72,74 @@ $stmt->close();
         </div>
     </div>
 
-    <!-- Bookings Card -->
+ 
     <div class="card">
         <div class="card-header">BOOKINGS</div>
-        <div class="card-body">
-            <p>🔧 Booking data integration coming soon...</p>
-        </div>
-    </div>
+         <?php     
+   
+
+      $user_id = $_SESSION['user_id'];
+
+      $bookings = mysqli_query($conn, "
+          SELECT b.booking_id, p.name AS package_name,p.destination AS destination, p.imageUrl AS url, b.status 
+          FROM bookings b
+          JOIN packages p ON b.package_id = p.package_id
+          WHERE b.user_id = $user_id
+      ");
+      ?>
+
+   
+
+                           
+       
+
+        <?php
+        if (mysqli_num_rows($bookings) > 0) {
+            while ($row = mysqli_fetch_assoc($bookings)) {
+        ?>
+            <div class="booking-card">
+                <div class="booking-image">
+                    <img src=<?php echo $row['url']; ?> alt="Beach">
+                </div>
+                <div class="booking-details">
+                    <div class="booking-title"><?php echo $row['package_name']; ?></div>
+                    <div class="booking-location"><?php echo $row['destination']; ?></div> 
+                    <div class="booking-message">
+                        <?php 
+                            if ($row['status'] == 'booked') {
+                                echo "Your booking is confirmed! Pack your bags!";
+                            } else {
+                                echo "Pay now to confirm you slot!";
+                            }
+                        ?>
+                    </div>
+                    <div class="booking-actions">
+                        <button class="btn btn-booking btn-booking-<?php echo ($row['status'] == 'booked') ? 'green' :'yellow'; ?>">
+                            <?php echo ucfirst($row['status']); ?>
+                        </button>
+
+                        <?php if ($row['status'] == 'pending') { ?>
+                          <form action="payment.php" method="POST" style="display:inline;">
+                            <?php echo htmlspecialchars($row['booking_id']);?>
+                              <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($row['booking_id']); ?>">
+                              <button type="submit" class="btn btn-booking btn-booking-green">PAY</button>
+                          </form>
+                        <?php }else{
+                            echo "<button class='btn btn-booking btn-booking-green'>VIEW ITINERARY</button>";
+
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        <?php
+            }
+        } else {
+            echo "<p style='text-align:center; font-weight:bold; margin-top: 20px;'>No bookings found.</p>";
+        }
+        ?>
+
+            </div>
 
     <button class="btn btn-explore">Explore</button>
   </div>

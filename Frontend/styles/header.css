@@ -1,10 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
 .hero-section {
-     /* background: url('/assets/mountain.png') no-repeat center center/cover;  */
-     background-color: black;
+     background: url('../assets/background.jpg') no-repeat center center/cover;  
+
     
-    height: 200vh;
+    height: 100vh;
     position: relative;
   }
 

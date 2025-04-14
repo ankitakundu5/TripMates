@@ -11,23 +11,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email format.";
     } else {
-        // Check if user exists
+
         $stmt = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows == 1) {
-            // Generate a reset token (or a temp password)
+            // token
             $token = bin2hex(random_bytes(32));
             $expires = date("Y-m-d H:i:s", strtotime("+15 minutes"));
 
-            // Save token to DB (assuming you have a reset_token & token_expiry column)
+          
             $update = $conn->prepare("UPDATE users SET reset_token=?, token_expiry=? WHERE email=?");
             $update->bind_param("sss", $token, $expires, $email);
             $update->execute();
 
-            // Simulate sending email (You can integrate PHPMailer or similar)
+            
             $resetLink = "http://localhost/TripMates-main/Frontend/reset_password.php?token=$token";
             $success = "Password reset link: <a href='$resetLink'>Click here</a>";
         } else {

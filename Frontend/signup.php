@@ -9,16 +9,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'] ?? '';
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMsg = "❌ Invalid email format.";
+        $errorMsg = "Invalid email format.";
     } else {
-        // Check for duplicate email
+      
         $check = $conn->prepare("SELECT user_id FROM users WHERE email = ?");
         $check->bind_param("s", $email);
         $check->execute();
         $check->store_result();
 
         if ($check->num_rows > 0) {
-            $errorMsg = "❌ Email already registered. Try logging in.";
+            $errorMsg = "Email already registered. Try logging in.";
         } else {
             // Hash password & insert
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $successMsg = "✅ Account created! You can now log in.";
                 header("Location: login.php");
             } else {
-                $errorMsg = "❌ Error: " . $stmt->error;
+                $errorMsg = "Error: " . $stmt->error;
             }
             $stmt->close();
         }

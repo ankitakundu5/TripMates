@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'] ?? '';
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMsg = "❌ Invalid email format.";
+        $errorMsg = " Invalid email format.";
     } else {
         $stmt = $conn->prepare("SELECT user_id, name, password FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
@@ -27,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: profile.php"); // Redirect to user profile
                 exit;
             } else {
-                $errorMsg = "❌ Incorrect password.";
+                $errorMsg = "Incorrect password.";
             }
         } else {
-            $errorMsg = "❌ Email not registered.";
+            $errorMsg = " Email not registered.";
         }
         $stmt->close();
     }
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-<!-- HTML + Bootstrap -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,7 +119,7 @@ $conn->close();
 <body>
   <div class="container-fluid">
     <div class="row login-container">
-      <!-- Left Side: Login Form -->
+    
       <div class="col-md-6 d-flex flex-column justify-content-center form-section">
         <div class="mb-4 logo">TripMates</div>
         <h4 class="mb-4">LOGIN</h4>
@@ -152,7 +152,7 @@ $conn->close();
         </footer>
       </div>
 
-      <!-- Right Side: Image -->
+  
       <div class="col-md-6 image-section p-0">
         <img src="https://img.freepik.com/premium-photo/group-friends-embarking-exciting-whitewater-rafting-adventure-realistic-thrilling-water-highquality-rafts-paddles-rapids-
         teamwork-adrenaline-excitement_1302739-27270.jpg" alt="Rafting Image">

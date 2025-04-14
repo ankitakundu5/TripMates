@@ -7,9 +7,13 @@ body{
   margin:30px;
   padding:40px;
 }
+.row{
+  padding:40px;
+
+}
 .search-box, .filter-section {
     background-color: #fff;
-    padding: 20px;
+    padding: 40px;
     border: 1px solid #eee;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -29,11 +33,26 @@ body{
     background-color: darkorange;
   }
 
+  #pack{
+    display: flex;
+  flex-wrap: wrap;
+  
+  justify-content:flex-start; 
+  align-items:center;
+  
+   padding: 10px;
+
+  
+    
+  }
   .package-card {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     overflow: hidden;
     transition: 0.3s;
+    width: 400px;
+    margin:20px;
+  
   }
 
   .package-card:hover {
@@ -42,7 +61,8 @@ body{
 
   .package-card img {
     width: 100%;
-    height: 200px;
+    height: 100px;
+
     object-fit: cover;
   }
 

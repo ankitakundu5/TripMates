@@ -44,20 +44,21 @@
     </section>
 
       
-       <div class="col-md-9 mb-5 " id="pack">
+       <div class="  ">
         <h3><strong>Our Best Packages</strong></h3>
+        <div id="pack">
         <?php
         
         require_once '../Backend/connect_db.php';
         
         $sql = "SELECT * FROM packages";
         $result = $conn->query($sql);
-        
+  
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
               
                 echo '
-                <div class="col-md-4">
+                <div class="">
                     <div class="position-relative package-card">
                         <span class="badge-top">'.htmlspecialchars($row['activities']).'</span>
                         <img src="'.htmlspecialchars($row['imageUrl']).'" alt="'.htmlspecialchars($row['name']).'" style="width:100%; height:200px; object-fit:cover;">
@@ -67,11 +68,15 @@
                         </div>
                     </div>
                 </div>';
+
+
             }
         } else {
             echo "No packages found.";
         }
+        
   ?>
+  </div>
   
         <div class="row g-10" id="card-container">
       

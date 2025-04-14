@@ -1,13 +1,13 @@
 <?php
 require_once 'connect_db.php';
 
-// Select the database
+
 $dbname = 'tripmates';
 if (!$conn->select_db($dbname)) {
     die("Failed to select database '$dbname': " . $conn->error);
 }
 
-// Array of SQL table creation statements
+
 $tables = [
 
 "CREATE TABLE IF NOT EXISTS users (
@@ -90,7 +90,7 @@ $tables = [
 
 ];
 
-// Execute each SQL statement
+
 foreach ($tables as $index => $sql) {
     if ($conn->query($sql) === TRUE) {
         echo " Table " . ($index + 1) . " created successfully.<br>";
@@ -99,6 +99,5 @@ foreach ($tables as $index => $sql) {
     }
 }
 
-// Close the connection
 $conn->close();
 ?>

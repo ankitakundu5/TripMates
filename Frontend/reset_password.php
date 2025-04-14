@@ -5,19 +5,19 @@ $token = $_GET['token'] ?? ($_POST['token'] ?? '');
 $error = $success = '';
 
 if (empty($token)) {
-    $error = "❌ Invalid or missing token.";
+    $error = " Invalid or missing token.";
 } else {
-    // Check token validity on page load
+   
     $check = $conn->prepare("SELECT user_id FROM users WHERE reset_token = ? AND token_expiry > NOW()");
     $check->bind_param("s", $token);
     $check->execute();
     $check->bind_result($user_id);
     if (!$check->fetch()) {
-        $error = "❌ Invalid or expired token.";
+        $error = " Invalid or expired token.";
     }
     $check->close();
 
-    // If valid and form is submitted
+
     if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($error)) {
         $newPassword = $_POST['password'];
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
@@ -25,9 +25,9 @@ if (empty($token)) {
         $update = $conn->prepare("UPDATE users SET password=?, reset_token=NULL, token_expiry=NULL WHERE user_id=?");
         $update->bind_param("si", $hashedPassword, $user_id_valid);
         if ($update->execute()) {
-            $success = "✅ Password updated. You can now <a href='login.php'>log in</a>.";
+            $success = " Password updated. You can now <a href='login.php'>log in</a>.";
         } else {
-            $error = "❌ Failed to update password.";
+            $error = " Failed to update password.";
         }
         $update->close();
     }
