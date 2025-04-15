@@ -37,7 +37,7 @@
           <p><strong>TripMates Travel Agency</strong></p>
           <p>Tel: +39 29 29 23 74<br>Fax: +39 087 880 00 05</p>
           <p><a href="mailto:info@tripmatesandtourists.it">info@tripmatesandtourists.it</a></p>
-          <button class="btn btn-warning mt-2">Contact</button>
+          <a href="feedback.php"><button class="btn btn-warning mt-2">FeedBack</button></a>
         </div>
       </div>
     </div>

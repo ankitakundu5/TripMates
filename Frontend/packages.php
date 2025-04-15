@@ -70,7 +70,7 @@ if (isset($_GET['id'])) {
 
         echo '
         <h1 class="package-title">' . htmlspecialchars($row['name']) . '</h1>
-        <p class="package-subtitle">' . htmlspecialchars($row['description']) . '</p>
+        <p class="package-subtitle">' . ($row['description']) . '</p>
         </div>
 
         <div class="col-lg-4">
@@ -86,7 +86,7 @@ if (isset($_GET['id'])) {
 
             <form action="./book.php" method="POST">
               <input type="hidden" name="user_id" value="' . $user_id . '">
-              <input type="hidden" name="package_id" value="' . htmlspecialchars($row['package_id']) . '">
+              <input type="hidden" name="package_id" value="' . ($row['package_id']) . '">
               <input type="hidden" name="total_price" value="' . htmlspecialchars($row['price']) . '">
               <button class="booking-btn w-100">Book Now</button>
             </form>
@@ -106,55 +106,42 @@ if (isset($_GET['id'])) {
         
      
         <div class="similar-packages mr-20 p-10">
-            <h2 class="section-title">More Like This</h2>
-            <div class="package-cards  mr-20 p-10">
-                <div class="package-card">
-                    <img src="assets/beach.jpg" alt="Beach Vacation" class="package-card-image">
-                    <div class="package-card-content">
-                        <h3 class="package-card-title">Beach Vacation Package</h3>
-                        <span class="package-card-price">₹15,999</span>
-                        <a href="#" class="package-card-btn">View</a>
-                    </div>
-                </div>
-                
-                <div class="package-card">
-                    <img src="assets/beach.jpg" alt="Beach Vacation" class="package-card-image">
-                    <div class="package-card-content">
-                        <h3 class="package-card-title">Beach Vacation Package</h3>
-                        <span class="package-card-price">₹15,999</span>
-                        <a href="#" class="package-card-btn">View</a>
-                    </div>
-                </div>
-                
-                <div class="package-card">
-                    <img src="assets/beach.jpg" alt="Beach Vacation" class="package-card-image">
-                    <div class="package-card-content">
-                        <h3 class="package-card-title">Beach Vacation Package</h3>
-                        <span class="package-card-price">₹15,999</span>
-                        <a href="#" class="package-card-btn">View</a>
-                    </div>
-                </div>
-
-                <div class="package-card">
-                    <img src="assets/beach.jpg" alt="Beach Vacation" class="package-card-image">
-                    <div class="package-card-content">
-                        <h3 class="package-card-title">Beach Vacation Package</h3>
-                        <span class="package-card-price">₹15,999</span>
-                        <a href="#" class="package-card-btn">View</a>
-                    </div>
-                </div>
-
-                <div class="package-card">
-                    <img src="assets/beach.jpg" alt="Beach Vacation" class="package-card-image">
-                    <div class="package-card-content">
-                        <h3 class="package-card-title">Beach Vacation Package</h3>
-                        <span class="package-card-price">₹15,999</span>
-                        <a href="#" class="package-card-btn">View</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p class="exp"><strong>Explore More</strong></p>
+        <div id="pack">
+        <?php
         
+        require_once '../Backend/connect_db.php';
+        
+        $sql = "SELECT * FROM packages";
+        $result = $conn->query($sql);
+  
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+              
+                echo '
+                <a href="packages.php?id='.htmlspecialchars($row['package_id']).'">
+                <div class="">
+                    <div class="position-relative package-card">
+                        <span class="badge-top">'.htmlspecialchars($row['activities']).'</span>
+                        <img src="'.htmlspecialchars($row['imageUrl']).'" alt="'.htmlspecialchars($row['name']).'" style="width:100%; height:200px; object-fit:cover;">
+                        <div class="package-card-content">
+                            <div class="card-location">'.htmlspecialchars($row['destination']).'</div>
+                            <div class="card-title">'.htmlspecialchars($row['name']).'</div>
+                        </div>
+                    </div>
+                </div>
+                </a>'
+                ;
+
+
+            }
+        } else {
+            echo "No packages found.";
+        }
+        
+  ?>
+  </div>
+          
     
     </div>
     

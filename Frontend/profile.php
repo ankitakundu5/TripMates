@@ -119,13 +119,12 @@ $stmt->close();
                         </button>
 
                         <?php if ($row['status'] == 'pending') { ?>
-                          <form action="payment.php" method="POST" style="display:inline;">
-                
-                              <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($row['booking_id']); ?>">
-                              <button type="submit" class="btn btn-booking btn-booking-green">PAY</button>
-                          </form>
+                            <form action="payment.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="booking_id" value="<?php echo ($row['booking_id']); ?>">
+                                <button type="submit" class="btn btn-booking btn-booking-green">PAY</button>
+                            </form>
                         <?php }else{
-                            echo "<button class='btn btn-booking btn-booking-green'>VIEW ITINERARY</button>";
+                            echo "<a ><button class='btn btn-booking btn-booking-green'>VIEW ITINERARY</button></a>";
 
                         }
                         ?>
@@ -141,7 +140,7 @@ $stmt->close();
 
             </div>
 
-    <button class="btn btn-explore">Explore</button>
+    <button class="btn btn-explore"><a href="search.php" class="explore">Explore</a></button>
   </div>
 
   <div id="footer-container"></div>

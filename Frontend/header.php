@@ -5,12 +5,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 
-$current_page = basename($_SERVER['PHP_SELF']);
+$current_page = basename(strtok($_SERVER['PHP_SELF'], '?'));
 
 $base_url = "http://localhost/TripMates/Frontend/";
 
+
 $header_config = [
-    'index.php' => [
+    'home.php' => [
         'height' => 'hero-height-full',
         'search_text' => 'Find your escape',
         'show_search_bar' => true
@@ -27,17 +28,17 @@ $header_config = [
     ],
     'contact.php' => [
         'height' => 'hero-height-small',
-        'page_description' => 'Get in touch with our team',
+        'page_description' => 'Get to know us',
         'show_search_bar' => false
     ],
     'profile.php' => [
         'height' => 'hero-height-small',
-        'page_description' => 'Manage your account and bookings',
+        'page_description' => 'Profile',
         'show_search_bar' => false
     ],
     'payment.php' => [
         'height' => 'hero-height-small',
-        'page_description' => 'Manage your account and bookings',
+        'page_description' => 'One step away',
         'show_search_bar' => false
     ]
 ];
@@ -45,7 +46,7 @@ $header_config = [
 if (!isset($header_config[$current_page])) {
     $header_config[$current_page] = [
         'height' => 'hero-height-small',
-        'page_description' => 'Explore TripMates',
+        'page_description' => 'Explore',
         'show_search_bar' => false
     ];
 }
@@ -66,11 +67,11 @@ $current_config = $header_config[$current_page];
     <link rel="stylesheet" href="./styles/header.css">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
+      
         .profile-image {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
+            border-radius:50%;
             cursor: pointer;
         }
         
@@ -78,12 +79,7 @@ $current_config = $header_config[$current_page];
             min-width: 200px;
         }
         
-        .profile-dropdown .dropdown-item i {
-            margin-right: 8px;
-            width: 20px;
-            text-align: center;
-        }
-        
+   
         .hero-height-full {
             min-height: 500px;
         }
@@ -142,7 +138,7 @@ $current_config = $header_config[$current_page];
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav mb-2 mb-lg-0 gap-4">
                         <li class="nav-item">
-                            <a class="nav-link text-white <?php echo ($current_page == 'index.php') ? 'active' : ''; ?>" 
+                            <a class="nav-link text-white <?php echo ($current_page == 'home.php') ? 'active' : ''; ?>" 
                                href="<?php echo $base_url; ?>home.php"><i class="bi bi-house-door me-2"></i> Home</a>
                         </li>
                         <li class="nav-item">
@@ -163,7 +159,7 @@ $current_config = $header_config[$current_page];
                     <?php if(isset($_SESSION['user_id'])): ?>
                    
                         <div class="dropdown profile-dropdown">
-                            <img src="<?php echo isset($_SESSION['profile_pic']) ? $_SESSION['profile_pic'] : $base_url . 'https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg'; ?>" 
+                            <img src="<?php echo isset($_SESSION['profile_pic']) ? $_SESSION['profile_pic'] :  'https://tse4.mm.bing.net/th?id=OIP.hGSCbXlcOjL_9mmzerqAbQHaHa&pid=Api&P=0&h=180'; ?>" 
                                  class="profile-image dropdown-toggle" 
                                  id="profileDropdown" 
                                 
@@ -190,8 +186,8 @@ $current_config = $header_config[$current_page];
         <?php if ($current_config['show_search_bar']): ?>
 
         <div class="search-bar d-flex align-items-center gap-2">
-            <input type="text" class="form-control flex-grow-1 search-input" placeholder="<?php echo $current_config['search_text']; ?>">
-            <button class="btn btn-orange search-button">Search</button>
+            <input type="text" class="form-control flex-grow-1 search-input">
+            <button class="btn btn-orange search-button"><a class=".sea" href="search.php">Explore</a></button>
         </div>
         <?php else: ?>
 
@@ -203,3 +199,6 @@ $current_config = $header_config[$current_page];
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        </body>
+        </html>

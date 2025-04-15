@@ -26,25 +26,7 @@
             padding: 0 15px;
         }
         
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo img {
-            height: 40px;
-        }
+   
         
         /* Page Title */
         .page-title {
@@ -307,69 +289,20 @@
             font-weight: 500;
         }
         
-        /* Footer */
-        footer {
-            background-color: #1A3A48;
-            color: white;
-            padding: 40px 0 20px;
-        }
+      button{  background-color: #FF7A00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 300px;
+        margin:auto;
+        align-self: center;
+        text-align: center;
         
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-        }
-        
-        .footer-logo {
-            height: 40px;
-            margin-bottom: 10px;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .footer-link {
-            color: #ddd;
-            text-decoration: none;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-icon {
-            color: white;
-            font-size: 18px;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            font-size: 13px;
-            color: #aaa;
-            text-align: center;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .rating-options {
-                flex-wrap: wrap;
-            }
-            
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
-            }
-        }
+      }
     </style>
 </head>
 <body>
@@ -397,16 +330,7 @@
                     <input type="email" id="email" placeholder="Enter your email">
                 </div>
                 
-                <div class="form-group">
-                    <label for="package">Select Package</label>
-                    <select id="package">
-                        <option value="">Select the package you experienced</option>
-                        <option value="kalabahal">Kalabahal Peak Trek</option>
-                        <option value="beach">Beach Vacation Package</option>
-                        <option value="city">City Explorer Tour</option>
-                        <option value="wildlife">Wildlife Safari Adventure</option>
-                    </select>
-                </div>
+   
                 
                 <div class="rating-group">
                     <p class="rating-title">How would you rate your overall experience?</p>

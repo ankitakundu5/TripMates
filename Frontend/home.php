@@ -25,7 +25,7 @@
     </script>
 
     <section class="services">
-        <h2>TripMates Holidays</h2>
+      
         <div class="service-grid">
             <div class="service-item">
                 <img src="assets/icons8-island-100.png" alt="Beach" style="width:100px;"><br>Beach Trips
@@ -146,7 +146,7 @@
         </div>
         <div class="destination-item">
           <div class="destination-card">
-            <img src="assets/beach.jpg" alt="beach destination" class="destination-image">
+            <img src="assets/background.jpg" alt="beach destination" class="destination-image">
           </div>
         </div>
         <div class="destination-item">
@@ -156,7 +156,7 @@
         </div>
         <div class="destination-item">
           <div class="destination-card">
-            <img src="assets/beach.jpg" alt="beach destination" class="destination-image">
+            <img src="assets/background.jpg" alt="beach destination" class="destination-image">
           </div>
         </div>
       </div>

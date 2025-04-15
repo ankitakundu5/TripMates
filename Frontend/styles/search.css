@@ -42,9 +42,23 @@ body{
   align-items:center;
   
    padding: 10px;
+ 
 
   
     
+  }
+  #pack a .card-location {
+    color: #888;
+  
+  }
+  
+  #pack a .card-title {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  #pack a:hover {
+    text-decoration: none;
   }
   .package-card {
     border-radius: 12px;

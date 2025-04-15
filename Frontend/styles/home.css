@@ -43,11 +43,6 @@ h3{
     width:500px;
 }
 
-.newsletter {
-    background: gray;
-    padding: 50px;
-    color: white;
-}
 
 #card-container{
     padding:30px;
@@ -116,6 +111,23 @@ h3{
       flex: 0 0 48%; 
       max-width: 48%;
   }
+}
+#pack a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+#pack a .card-location {
+  color: #888;
+}
+
+#pack a .card-title {
+  color: #333;
+}
+
+#pack a:hover {
+  text-decoration: none;
 }
 
   .badge-top {

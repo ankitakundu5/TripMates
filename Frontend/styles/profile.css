@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kavoon&display=swap');
 
-body{
-  
-    display: flex;
-    flex-flow:column;
-    justify-content: center;
-    align-items: center;
-
-}
 .container{
     margin:50px;
     padding:0px;
@@ -30,7 +22,7 @@ body{
 
 div.card-header {
     background-color: darkorange;
-    color: #000;
+    color: white;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
@@ -47,7 +39,10 @@ div.card-header {
 .profile-details {
     width:500px;
 }
-
+.explore{
+    text-decoration: none;
+    color:white;
+}
 .profile-avatar {
     width: 100px;
     height: 100px;
