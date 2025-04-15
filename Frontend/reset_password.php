@@ -23,7 +23,7 @@ if (empty($token)) {
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
         $update = $conn->prepare("UPDATE users SET password=?, reset_token=NULL, token_expiry=NULL WHERE user_id=?");
-        $update->bind_param("si", $hashedPassword, $user_id_valid);
+        $update->bind_param("si", $hashedPassword, $user_id);
         if ($update->execute()) {
             $success = " Password updated. You can now <a href='login.php'>log in</a>.";
         } else {
