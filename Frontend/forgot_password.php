@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $update->execute();
 
             
-            $resetLink = "http://localhost/TripMates-main/Frontend/reset_password.php?token=$token";
+            $resetLink = "http://localhost/TripMates/Frontend/reset_password.php?token=$token";
             $success = "Password reset link: <a href='$resetLink'>Click here</a>";
         } else {
             $error = "Email not found.";
